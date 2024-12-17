@@ -8,6 +8,7 @@ import org.yearup.data.ProductDao;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
 
+import javax.validation.Valid;
 import java.util.List;
 
 // add the annotations to make this a REST controller
@@ -60,7 +61,7 @@ public class CategoriesController
     @PostMapping
     // add annotation to ensure that only an ADMIN can call this function
     @PreAuthorize("hasRole('ADMIN')") //restricts access to admins only
-    public Category addCategory(@RequestBody Category category)
+    public Category addCategory(@RequestBody @Valid Category category)
     {
         // insert the category
         return categoryDao.create(category);
@@ -70,7 +71,7 @@ public class CategoriesController
     @PutMapping("/{id}")
     // add annotation to ensure that only an ADMIN can call this function
     @PreAuthorize("hasRole('ADMIN')")
-    public void updateCategory(@PathVariable int id, @RequestBody Category category)
+    public void updateCategory(@PathVariable int id, @RequestBody @Valid Category category)
     {
         // update the category by id
         categoryDao.update(id,category);

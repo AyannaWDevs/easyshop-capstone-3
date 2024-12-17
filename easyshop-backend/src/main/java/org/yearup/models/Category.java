@@ -1,9 +1,16 @@
 package org.yearup.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Category
 {
     private int categoryId;
+
+    @NotNull(message = "Category name cannot be null")
+    @Size(min = 2, max = 50, message = "Category name must be between 2 and 50 characters")
     private String name;
+
     private String description;
 
     public Category()
