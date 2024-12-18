@@ -1,6 +1,7 @@
 package org.yearup.data.mysql;
 
 import org.apache.commons.dbcp2.DataSourceConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
@@ -16,12 +17,16 @@ import java.util.List;
 
 @Component
 public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
+
 {
+
+    @Autowired
     public MySqlCategoryDao(DataSource dataSource)
     {
         super(dataSource);
     }
-    private JdbcTemplate jdbcTemplate;
+
+
 
     @Override
     public List<Category> getAllCategories()
@@ -31,7 +36,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         String sql = "SELECT * FROM categories";
 
 
-        try (Connection connection = jdbcTemplate.getDataSource().getConnection();
+        try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
@@ -51,9 +56,9 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public Category getById(int categoryId)
     {
-        String sql = "SELECT * FROM categories WHERE id = ?";
+        String sql = "SELECT * FROM categories WHERE category_id = ?";
 
-        try (Connection connection = jdbcTemplate.getDataSource().getConnection();
+        try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             // Bind the categoryId to the query
@@ -64,8 +69,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
                     // Map the result set to a Category object
                     return mapRow(resultSet);
                 } else {
-                    // If no category is found, throw an exception
-                    throw new RuntimeException("Category not found for ID: " + categoryId);
+                    // If no category is found, return null
+                   return null;
                 }
             }
 
@@ -79,7 +84,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     {
         String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
 
-        try (Connection connection = jdbcTemplate.getDataSource().getConnection();
+        try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             // Binds parameters to the query
@@ -107,9 +112,9 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     @Override
     public void update(int categoryId, Category category)
-    {    String sql = "UPDATE categories SET name = ?, description = ? WHERE id = ?";
+    {    String sql = "UPDATE categories SET name = ?, description = ? WHERE category_id = ?";
 
-        try (Connection connection = jdbcTemplate.getDataSource().getConnection();
+        try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             // Bind the parameters to the SQL query
@@ -134,9 +139,9 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     public void delete(int categoryId)
     {
         // delete category
-        String sql = "DELETE FROM categories WHERE id = ?";
+        String sql = "DELETE FROM categories WHERE category_id = ?";
 
-        try (Connection connection = jdbcTemplate.getDataSource().getConnection();
+        try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             // Bind the categoryId to the query
@@ -161,12 +166,12 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         String name = row.getString("name");
         String description = row.getString("description");
 
-        Category category = new Category()
-        {{
-            setCategoryId(categoryId);
-            setName(name);
-            setDescription(description);
-        }};
+        Category category = new Category();
+
+            category.setCategoryId(categoryId);
+            category.setName(name);
+            category.setDescription(description);
+
 
         return category;
     }
