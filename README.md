@@ -1,4 +1,4 @@
-## EasyShop Capstone
+# EasyShop Capstone
 ### Description
 The E-Commerce API is a RESTful backend service that manages categories and products for an online shopping platform. It includes user authentication and role-based access control to ensure secure resource management.
 ### Key Features
