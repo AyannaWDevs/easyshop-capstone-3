@@ -138,7 +138,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public void delete(int categoryId)
     {
-        // delete category
+        // Delete category
         String sql = "DELETE FROM categories WHERE category_id = ?";
 
         try (Connection connection = getConnection();
@@ -148,17 +148,15 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             statement.setInt(1, categoryId);
 
             // Execute the delete query
-            int rowsAffected = statement.executeUpdate();
+            statement.executeUpdate();
 
-            // Check if any rows were deleted
-            if (rowsAffected == 0) {
-                throw new RuntimeException("No category found with ID: " + categoryId);
-            }
 
         } catch (SQLException e) {
+            //throw a runtime exception with the original error message
             throw new RuntimeException("Error while deleting the category with ID: " + categoryId, e);
         }
     }
+
 
     private Category mapRow(ResultSet row) throws SQLException
     {
