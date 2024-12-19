@@ -42,7 +42,7 @@ Ensures secure access to the API with role-based permissions for users and admin
  
 **Database Management**
 
-  - CRUD operations
+  - CRUD operations (GET, POST, PUT, DELETE)
   - Query filtering with WHERE clauses
   - Setting up and configuring a MySQL database for the application and establishing a connection
  
