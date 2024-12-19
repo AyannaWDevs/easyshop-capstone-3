@@ -24,3 +24,37 @@ Ensures secure access to the API with role-based permissions for users and admin
 
 4. Build and run the application
 5. Access the API at http://localhost:8080
+
+### Applied Concepts
+
+**Java Fundamentals**
+
+- Understanding the application of concepts such as OOP, encapsulation, and polymorphism
+- Utilizing try-catch, throw, and custom exception handling
+- Knowledge of primitive and complex data types such as BigDecimal or String
+
+**Spring Framework**
+
+  - Dependency Injection
+  - Controllers such as @RestController, @RequestMapping, and @GetMapping
+  - @Component for DAO classes
+ 
+ 
+**Database Management**
+
+  - CRUD operations
+  - Query filtering with WHERE clauses
+  - Setting up and configuring a MySQL database for the application and establishing a connection
+ 
+**RESTful API Design**
+    
+- REST Principles and use of HTTP methods (GET, POST, PUT, DELETE)
+- Troubleshooting status codes
+
+**Authentication/Authorization**
+    
+- Assigning roles (e.g. ADMIN, USER)
+- Role-Based Access Control
+   
+**Testing and Debugging**
+- Postman for manual testing of API endpoints
