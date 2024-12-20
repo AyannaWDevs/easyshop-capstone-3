@@ -66,8 +66,16 @@ Ensures secure access to the API with role-based permissions for users and admin
 ### Authentication/Log-in Feature
 ![Screenshot 2024-12-20 083416](https://github.com/user-attachments/assets/61fb6467-773b-44cd-9913-6c03b7c21c60)
 
-### Grouping by Category
-![Screenshot 2024-12-20 083449](https://github.com/user-attachments/assets/eb33af87-e3b5-4613-93e1-8fc2cc47b0db)
+### Search by Minimum and Maximum Price
+![Screenshot 2024-12-20 085543](https://github.com/user-attachments/assets/f53c2c9b-2344-46be-9f17-b7d4474af058)
+
+### Group by Category
+![Screenshot 2024-12-20 085805](https://github.com/user-attachments/assets/d06f4279-1d12-4723-8727-ac04ddd0d749)
+
+### Search by Color
+![Screenshot 2024-12-20 091021](https://github.com/user-attachments/assets/242fe476-9710-4045-adcf-cab744be38ba)
+
+
 
 
 
