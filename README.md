@@ -58,3 +58,16 @@ Ensures secure access to the API with role-based permissions for users and admin
    
 **Testing and Debugging**
 - Postman for manual testing of API endpoints
+
+## The Front End: 
+### Homescreen
+![Screenshot 2024-12-20 083354](https://github.com/user-attachments/assets/068e3d51-a2f7-4d72-ab6a-b3700eef5a19)
+
+### Authentication/Log-in Feature
+![Screenshot 2024-12-20 083416](https://github.com/user-attachments/assets/61fb6467-773b-44cd-9913-6c03b7c21c60)
+
+### Grouping by Category
+![Screenshot 2024-12-20 083449](https://github.com/user-attachments/assets/eb33af87-e3b5-4613-93e1-8fc2cc47b0db)
+
+
+
