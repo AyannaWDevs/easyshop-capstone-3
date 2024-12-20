@@ -25,6 +25,26 @@ Ensures secure access to the API with role-based permissions for users and admin
 4. Build and run the application
 5. Access the API at http://localhost:8080
 
+### An Interesting Snippet of Code
+          @GetMapping("") // maps the method to a GET request to thebase/root path (/products) of the controller
+    @PreAuthorize("permitAll()") 
+    public List<Product> search(@RequestParam(name="cat", required = false) Integer categoryId,        // maps query parameters to the corresponding variable
+                                @RequestParam(name="minPrice", required = false) BigDecimal minPrice,        //false indicates that the param is optional and defaults to null if empty
+                                @RequestParam(name="maxPrice", required = false) BigDecimal maxPrice,
+                                @RequestParam(name="color", required = false) String color
+                                )
+    {
+        try //to perform product search and throws exception if encountered
+        {
+            return productDao.search(categoryId, minPrice, maxPrice, color);
+        }
+        catch(Exception ex)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");        //returns http error response 
+        }
+    }
+
+
 ### Applied Concepts
 
 **Java Fundamentals**
